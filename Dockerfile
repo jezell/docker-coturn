@@ -1,5 +1,4 @@
 FROM alpine:latest
-MAINTAINER Ian Blenke <ian@blenke.com>
 
 ENV COTURN_VERSION 4.5.0.3
 

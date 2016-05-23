@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# Discover public and private IP for this instance
-PUBLIC_IPV4="$(curl -qs http://169.254.169.254/2014-11-05/meta-data/public-ipv4)"
-[ -n "$PUBLIC_IPV4" ] || PUBLIC_IPV4="$(curl -qs ipinfo.io/ip)"
-PRIVATE_IPV4="$(curl -qs http://169.254.169.254/2014-11-05/meta-data/local-ipv4)"
-[ -n "$PRIVATE_IPV4" ] || PRIVATE_IPV4="$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1)"
-
 # Yes, this does work. See: https://github.com/ianblenke/aws-6to4-docker-ipv6
 #IPV6="$(ip -6 addr show eth0 scope global | grep inet6 | awk '{print $2}')"
 
