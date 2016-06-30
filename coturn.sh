@@ -19,6 +19,8 @@ cat <<EOF > ${TURNSERVER_CONFIG}-template
 listening-port=${PORT}
 min-port=${MIN_PORT}
 max-port=${MAX_PORT}
+static-auth-secret=${AUTH_SECRET}
+realm=${REALM}
 EOF
 
 if [ "${PUBLIC_IPV4}" != "${PRIVATE_IPV4}" ]; then
@@ -48,4 +50,4 @@ fi
 # Allow for ${VARIABLE} substitution using envsubst from gettext
 envsubst < ${TURNSERVER_CONFIG}-template > ${TURNSERVER_CONFIG}
 
-exec /app/bin/turnserver
+exec /app/bin/turnserver -v
